@@ -21,6 +21,18 @@ def _prepare_direct_execution() -> None:
 _prepare_direct_execution()
 
 
+def _resource_path(relative_path: str) -> Path:
+    """Resolve a resource from source code or a PyInstaller one-file bundle."""
+
+    bundle_directory = getattr(sys, "_MEIPASS", None)
+    base_directory = (
+        Path(bundle_directory)
+        if bundle_directory is not None
+        else Path(__file__).resolve().parents[2]
+    )
+    return base_directory / relative_path
+
+
 def _enable_high_dpi() -> None:
     """Enable per-monitor DPI awareness when supported by Windows."""
 
@@ -54,6 +66,7 @@ def main() -> None:
             processor=TextConversionService(logger.getChild("processor")),
             logger=logger,
         )
+        app.iconbitmap(str(_resource_path("assets/keyspro.ico")))
         app.mainloop()
     except Exception as exc:
         logger.exception("KeysPro terminated unexpectedly")

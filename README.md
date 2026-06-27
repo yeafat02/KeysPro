@@ -11,6 +11,7 @@ can be distributed to end users without requiring Python to be installed.
 ## Features
 
 - Modern CustomTkinter interface with System, Light, and Dark themes
+- Custom KeysPro window, taskbar, and executable icon
 - Fixed, centered `1060 x 620` application window
 - Input selection using Browse or drag and drop
 - Separate output-folder selection
@@ -221,6 +222,9 @@ Recommended release procedure:
 ```text
 KeysPro/
 |-- .vscode/                 VS Code interpreter and launch configuration
+|-- assets/
+|   |-- keyspro-icon.png     Transparent high-resolution icon master
+|   `-- keyspro.ico          Multi-resolution Windows icon
 |-- scripts/
 |   `-- build.ps1            Verified production-build script
 |-- src/keyspro/

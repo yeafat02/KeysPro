@@ -5,7 +5,7 @@ from PyInstaller.utils.hooks import collect_all
 
 ctk_datas, ctk_binaries, ctk_hiddenimports = collect_all("customtkinter")
 dnd_datas, dnd_binaries, dnd_hiddenimports = collect_all("tkinterdnd2")
-datas = ctk_datas + dnd_datas
+datas = ctk_datas + dnd_datas + [("assets/keyspro.ico", "assets")]
 binaries = ctk_binaries + dnd_binaries
 hiddenimports = ctk_hiddenimports + dnd_hiddenimports
 
@@ -31,6 +31,7 @@ exe = EXE(
     analysis.datas,
     [],
     name="KeysPro",
+    icon="assets/keyspro.ico",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
